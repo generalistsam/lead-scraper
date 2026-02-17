@@ -44,8 +44,8 @@ function cleanArray(values: string[]) {
   return values.map((value) => value.trim()).filter(Boolean)
 }
 
-function addIfValue<T extends Record<string, unknown>>(
-  target: T,
+function addIfValue(
+  target: Record<string, unknown>,
   key: string,
   value: unknown
 ) {
@@ -57,7 +57,7 @@ function addIfValue<T extends Record<string, unknown>>(
   ) {
     return
   }
-  target[key] = value
+  ;(target as Record<string, unknown>)[key] = value
 }
 
 async function fetchLinkedinPostCount(
